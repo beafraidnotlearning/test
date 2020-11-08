@@ -1,0 +1,257 @@
+@font-face {
+  font-family: "Academ";
+  src: url("../fonts/Academ.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Timewatch";
+  src: url("../fonts/Timewatch.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+*,
+*:focus {
+  margin: 0;
+  padding: 0;
+  border: none;
+  list-style: none;
+  outline: none;
+  text-decoration: none;
+  font-family: "Academ", sans-serif;
+  /*font-size: 3vw;*/
+  font-weight: normal;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../images/bg-image.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  background-position-y: bottom;
+  color: #FFBF40;
+  /* color: #FFD073;*/
+}
+
+.section-timemove {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-timemove div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Timewatch", sans-serif;
+  background: linear-gradient(#cca78d, #cd9a7b);
+  color: #2de8dd;
+  border-radius: 0.5rem;
+  box-shadow: 1vh 1vh 0.5vh rgba(20, 20, 20, 0.8);
+}
+
+.section-timemove time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Timewatch", sans-serif;
+  background: linear-gradient(#cca78d, #cd9a7b);
+  color: #2de8dd;
+  border-radius: 0.5rem;
+  box-shadow: 1vh 1vh 0.5vh rgba(20, 20, 20, 0.8);
+}
+
+.section-timemove time span {
+  font-family: "Timewatch", "Academ", sans-serif;
+}
+
+.game-popup-button {
+  background-image: url('../images/name-author.png');
+  background-size: cover;
+  text-align: center;
+}
+
+.game-board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(128, 115, 115, 0.7);
+  background-image: url('../images/overlay.png');
+  background-size: cover;
+  border-style: solid;
+  border-image: url('../images/border.png') 1000;
+  border-image-width: 100%;
+  box-shadow: 0 1.2vh 0.7vh rgba(20, 20, 20, 0.8);
+}
+
+.game-popup-button:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-menu li:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-puzzle {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background-size: cover;
+}
+
+.game-puzzle li {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: rgba(166, 111, 0, 0.3);
+  border: 1px solid #754F04;
+  border-radius: 1px;
+
+  transition: all 0.5s;
+}
+
+.game-puzzle li:hover {
+  background-color: blanchedalmond;
+  cursor: pointer;
+}
+
+.game-popup ul li:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-puzzle .empty-mosaic {
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+}
+
+.game-puzzle .empty-mosaic:hover {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+.game-load {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.game-load li:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-scores {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.game-scores li:last-child {
+  margin: 0 auto;
+}
+
+.game-scores li:last-child:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-settings li {
+  text-align: center;
+}
+
+.game-settings .game-settings-select {
+  margin-top: 1vw;
+}
+
+.game-settings li:last-child {
+  margin-top: 4vw;
+}
+
+.game-settings li:last-child:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
+
+.game-puzzle .opacity-none {
+  opacity: 0;
+}
+
+.display-none {
+  display: none;
+}
+
+.blackout {
+  position: fixed;
+  background: rgba(41, 41, 41, 0.6);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  opacity: 1;
+  z-index: 10;
+  pointer-events: all;
+}
+
+.section-win {
+  position: fixed;
+  z-index: 11;
+  border-radius: 0.9rem;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: win 1s ease-out;
+}
+
+@keyframes win {
+  0% {
+    transform: scale(0);
+  }
+
+  25% {
+    transform: scale(0.25);
+  }
+
+  50% {
+    transform: scale(0.5);
+  }
+
+  75% {
+    transform: scale(0.75);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.section-win a:hover {
+  color: #FFE773;
+  cursor: pointer;
+}
