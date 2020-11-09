@@ -444,7 +444,19 @@ class Puzzle {
       loadScoresObj.push(saveScore);
     } else {
       loadScoresObj.push(saveScore);
-      loadScoresObj.sort((objA, objB) => objA.countMoves - objB.countMoves);
+      loadScoresObj.sort((objA, objB) => {
+        if (objA.countMoves > objB.countMoves) {
+          return 1;
+        } if (objA.countMoves < objB.countMoves) {
+          return -1;
+        }
+        if (objA.countSeconds > objB.countSeconds) {
+          return 1;
+        } if (objA.countSeconds < objB.countSeconds) {
+          return -1;
+        }
+        return 0;
+      });
       if (loadScoresObj.length > 10) {
         loadScoresObj.pop();
       }
@@ -686,69 +698,6 @@ class Puzzle {
       document.body.removeChild(blackout);
       document.body.removeChild(sectionWin);
     });
-    /*
-    const blackout = document.createElement('section');
-    blackout.classList.add('blackout');
-    document.body.appendChild(blackout);
-
-    const sectionWin = document.createElement('section');
-    sectionWin.classList.add('section-win');
-    if (window.innerWidth > window.innerHeight) {
-      sectionWin.style.width = `${window.innerHeight * 0.5}px`;
-      sectionWin.style.height = `${window.innerHeight * 0.5}px`;
-    } else {
-      sectionWin.style.width = `${window.innerWidth * 0.5}px`;
-      sectionWin.style.height = `${window.innerWidth * 0.5}px`;
-    }
-    sectionWin.style.fontSize = `${+sectionWin.style.height.replace('px', '') * 0.1}px`;
-    sectionWin.style.left = `${(window.innerWidth - sectionWin.style.width.replace('px', '')) / 2}px`;
-    sectionWin.style.top = `${(window.innerHeight - sectionWin.style.height.replace('px', '')) / 2}px`;
-    document.body.appendChild(sectionWin);
-
-    const messageWin = document.createElement('div');
-    messageWin.classList.add('message-win');
-    messageWin.innerHTML = `Ура! Вы решили головоломку за ${this.timeMoves.sectionTimeMoves.firstChild.innerHTML.slice(6)} и ${this.timeMoves.countMoves} ходов`;
-    sectionWin.appendChild(messageWin);
-
-    const goBack = document.createElement('a');
-    goBack.classList.add('back');
-    goBack.innerHTML = 'Main menu';
-    sectionWin.appendChild(goBack);
-
-    this.updateScores();
-    goBack.addEventListener('click', () => {
-      this.gamePuzzle.style.backgroundImage = '';
-      this.gamePuzzle.className = setDisplay(this.gamePuzzle, 'off');
-      this.gameMenu.className = setDisplay(this.gameMenu, 'on');
-      this.gamePopUpButton.className = setDisplay(this.gamePopUpButton, 'off');
-      this.timeMoves.sectionTimeMoves.className = setDisplay(this.timeMoves.sectionTimeMoves, 'off');
-      this.gamePopUpButton.innerHTML = 'Pause';
-      this.gamePopUp.firstChild.children[1].innerHTML = 'Save game';
-
-      this.displacementArr = new Array(0);
-      this.timeMoves.countMoves = 0;
-      this.timeMoves.countSeconds = 0;
-
-      document.body.removeChild(blackout);
-      document.body.removeChild(sectionWin);
-    });
-
-    blackout.addEventListener('click', () => {
-      this.gamePuzzle.style.backgroundImage = '';
-      this.gamePuzzle.className = setDisplay(this.gamePuzzle, 'off');
-      this.gameMenu.className = setDisplay(this.gameMenu, 'on');
-      this.gamePopUpButton.className = setDisplay(this.gamePopUpButton, 'off');
-      this.timeMoves.sectionTimeMoves.className = setDisplay(this.timeMoves.sectionTimeMoves, 'off');
-      this.gamePopUpButton.innerHTML = 'Pause';
-      this.gamePopUp.firstChild.children[1].innerHTML = 'Save game';
-
-      this.displacementArr = new Array(0);
-      this.timeMoves.countMoves = 0;
-      this.timeMoves.countSeconds = 0;
-
-      document.body.removeChild(blackout);
-      document.body.removeChild(sectionWin);
-    }); */
   }
 
   resizeDisplay() {
